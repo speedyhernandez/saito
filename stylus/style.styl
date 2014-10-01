@@ -1,0 +1,796 @@
+@import url(http://fonts.googleapis.com/css?family=Open\+Sans)
+/* Variables */
+base-font = 'Open Sans',Georgia,serif
+base-font-size = 100%\/1.5
+base-font-color = #222
+body-font = normal 1.3125em/1.52381em base-font
+common-border-color = #333
+header-font-color = #900
+main-bg-color = #fff
+selection-color = #c47529
+selection-text-color = main-bg-color
+subtle-color = #ccc
+table-border = 1px solid subtle-color
+
+/* Mix-ins */
+fontSmoothing()
+    -webkit-font-smoothing antialiased
+    font-smoothing antialiased
+    text-rendering optimizeLegibility
+
+vendorize(property, value)
+    -webkit-{property} value
+    -moz-{property} value
+    -ms-{property} value
+    {property} value
+
+hideText()
+    overflow hidden
+    text-indent -9999px
+
+bgImage(value)
+    background url(value) no-repeat scroll 0 0 transparent
+
+/* Base reset */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+dialog
+    display: block
+
+audio[controls],
+canvas,
+video
+    display: inline-block
+    *display: inline
+    zoom: 1
+
+html
+    height: 100%
+    font-size: 100%
+    overflow-y: scroll
+    -webkit-text-size-adjust: 100%
+
+body
+    margin: 0
+    min-height: 100%
+    fontSmoothing()
+
+body,
+button,
+input,
+select,
+textarea
+    font: base-font-size base-font
+    *font-size: 1em
+    color: base-font-color
+
+p,
+blockquote,
+q,
+pre,
+address,
+hr,
+code,
+samp,
+dl,
+ol,
+ul,
+form,
+table,
+fieldset,
+menu,
+img
+    margin: 0 0 1.5em
+    padding: 0
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+    margin: 0
+    text-shadow: 1px 1px 1px rgba(0,0,0,.10)
+
+h1,
+h2,
+h3
+    color: header-font-color
+
+h1
+    font-size: 1.66667em
+    line-height: 1.2em
+    margin-bottom: 1.2em
+
+h2
+    font-size: 1.33333em
+    line-height: 1em
+    margin-bottom: 1.5em
+
+h3,
+h4,
+h5,
+h6
+    font-size: 1em
+    line-height: 1.5em
+    margin-bottom: 1.5em
+
+p,
+ul,
+blockquote,
+pre,
+td,
+th,
+label
+    margin: 0
+    font-size: 1em
+    line-height: 1.5em
+    margin-bottom: 1.5em
+
+small,
+p.small
+    margin: 0
+    font-size: .875em
+    line-height: 1.7142857142857em
+    margin-bottom: 1.7142857142857em
+
+pre
+    white-space: pre
+    white-space: pre-wrap
+    word-wrap: break-word
+
+pre,
+code,
+kbd,
+samp
+    font-size: 1em
+    line-height: 1.5em
+    margin-bottom: 1.5em
+
+table
+    border-collapse: collapse
+    border-spacing: 0
+    margin-bottom: 1.5em
+
+th
+    text-align: left
+
+tr,
+th,
+td
+    padding-right: 1.5em
+    border-bottom: 0 solid common-border-color
+
+form
+    margin: 0
+
+fieldset
+    border: 0
+    padding: 0
+
+textarea
+    overflow: auto
+    vertical-align: top
+
+legend
+    *margin-left: -.75em
+
+button,
+input,
+select,
+textarea
+    vertical-align: baseline
+    *vertical-align: middle
+
+button,
+input
+    line-height: normal
+    *overflow: visible
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"]
+    cursor: pointer
+    vendorize(appearance, button)
+
+input[type="checkbox"],
+input[type="radio"]
+    vendorize(box-sizing, border-box)
+
+input[type="search"]
+    vendorize(appearance, textfield)
+    vendorize(box-sizing, content-box)
+
+input[type="search"]::-webkit-search-decoration
+    vendorize(appearance, none)
+
+button::-moz-focus-inner,
+input::-moz-focus-inner
+    border: 0
+    padding: 0
+
+blockquote,
+q
+    quotes: none
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after
+    content: ''
+    content: none
+
+blockquote,
+q,
+cite
+    font-style: italic
+
+blockquote
+    padding-left: 1.5em
+    border-left: 3px solid #ccc
+
+blockquote > p
+    padding: 0
+
+ul,
+ol
+    list-style-position: inside
+    padding: 0
+
+li ul,
+li ol
+    margin: 0 1.5em
+
+dl dd
+    margin-left: 1.5em
+
+dt
+    font-family: base-font
+
+a
+    color: base-font-color
+    &:hover
+        color: header-font-color
+
+a:focus
+    outline: thin dotted
+
+a:hover,
+a:active
+    outline: none
+
+figure
+    margin: 0
+
+img,
+object,
+embed,
+video
+    max-width: 100%
+    _width: 100%
+
+img
+    border: 0
+    -ms-interpolation-mode: bicubic
+
+svg:not(:root)
+    overflow: hidden
+
+abbr[title],
+dfn[title]
+    border-bottom: 1px dotted common-border-color
+    cursor: help
+
+ins,
+mark
+    text-decoration: none
+
+mark
+    background: selection-color
+
+ins
+    background: #d49855
+
+del
+    text-decoration: line-through
+
+::-moz-selection
+    background: selection-color
+    color: selection-text-color
+    text-shadow: none
+
+::selection
+    background: selection-color
+    color: selection-text-color
+    text-shadow: none
+
+strong,
+b,
+dt
+    font-weight: 700
+
+dfn
+    font-style: italic
+
+var,
+address
+    font-style: normal
+
+sub,
+sup
+    font-size: 75%
+    line-height: 0
+    position: relative
+    vertical-align: baseline
+
+sup
+    top: -.5em
+
+sub
+    bottom: -.25em
+
+span.amp
+    font-style: italic
+    font-size: 110%
+    line-height: 0
+    position: relative
+    vertical-align: baseline
+
+.cf:before,
+.cf:after
+    content: ""
+    display: table
+
+.cf:after
+    clear: both
+
+.cf
+    zoom: 1
+
+/* DEFAULT MOBILE STYLE */
+body
+    background-color: main-bg-color
+    border-top: 2px solid common-border-color
+    height: 100%
+    padding: 0 0 4.00000125em 0
+    position: relative
+    text-rendering: optimizeLegibility
+    -webkit-text-size-adjust: 100%
+
+nav
+    display: block
+    margin-bottom: 1em
+    ul
+        margin: 0
+        text-align: center
+        text-transform: uppercase
+        li
+            display: inline
+            font-size: 0.75em
+            line-height: 0.75em
+            padding: 0
+    a,
+    a:hover
+        text-decoration: none
+
+.common-nav
+    font-weight: bold
+    a
+        display: inline-block
+        padding: 1.333333em 1.7em
+
+header
+    margin-bottom: 2.90476em
+    text-align: center
+    h1
+        bgImage('../img/logo-large.png')
+        background-size: 100%
+        display: inline-block
+        height: 11.1749776500447em
+        hideText()
+        max-width: 9.8249803500393em;
+        margin: 0 auto
+        width: 100%
+
+#judo > h3:first-of-type
+    clear: left
+    display: inline-block
+    margin-top: 1.5em
+
+section
+    display: inline-block
+    margin: 0
+    padding-bottom: 2em
+    width: 100%
+    ol
+        list-style-position: outside;
+        margin-left: 1.5em
+        padding-left: 0.5625em
+    ul
+        list-style: square outside none;
+        margin-left: 1.1875em
+        li
+            padding-left: 0.5em
+    li + li
+        margin-top: 0.5em
+
+blockquote
+    margin: 1.5em
+    padding-left: 0.5625em
+
+footer
+    font-size: 0.90476em
+    line-height: 1.26316em
+    text-transform: lowercase
+
+footer
+    > nav
+    > span
+        display: block
+        text-align: center
+
+#content
+    width: 92%
+    margin: 0 auto
+
+table
+    border-bottom: table-border
+    font-size: 0.75em
+    margin: 0 0 1.14286em
+    width: 100%
+    td
+        border: table-border
+        border-style: solid solid none
+        height: 1.52381em
+        padding: 0
+        vertical-align: top
+    tr.mid td
+        border-style: dashed solid solid
+    tr.blocked
+        background-color: #ccc
+    .women-judo
+    .karate
+    .judo
+        color: #fff
+        text-align: center
+    .women-judo
+        background-color: #f48eab
+    .karate
+        background-color: #ff9600
+    .judo
+        background-color: #00b4ff
+
+hr
+    border-top: 1px solid common-border-color
+    border-style: solid none none
+    display: block
+    margin: 1.5625em 0
+    width: 100%
+
+.hr-logo
+    background: url('../img/hr.png') no-repeat scroll center main-bg-color
+    display: block
+    height: 3.125em
+    left: 50%
+    margin: 0 0 0 -2.25em
+    position: absolute
+    width: 4.5em
+    z-index: 2
+
+.img-media
+    position: relative
+    text-align: center
+    span
+        font-size: 0.625em
+        left: 0
+        line-height: 1.2em
+        margin-top: 0.125em
+        position: absolute
+
+.img-wrapper
+    text-align: center
+
+.to-top
+    color: subtle-color
+    float: right
+
+.logo
+    bgImage('../img/saitologo.png')
+    display: block
+    height: 10.125em
+    margin: 0 auto 1.5em
+    width: 9.625em
+
+.jigoro-kano
+    background: url('../img/jigoro-kano.jpg') no-repeat scroll center transparent
+    display: inline-block
+    float: left
+    height: 11.8125em
+    margin-right: 0.75em
+    max-width: 10.125em;
+    min-width: 7em;
+    width: 50%;
+
+.judo-sport
+    bgImage('../img/judo-sport.jpg')
+    background-size: 100%
+    display: inline-block
+    height: 10.9375em
+    margin-bottom: 3.04762em
+    width: 100%
+
+#throws div,
+#kata
+    display: block
+    a
+        cursor: pointer
+        text-decoration: underline
+
+.saito
+    bgImage('../img/noboru-saito.jpg')
+    display: inline-block
+    height: 15.1875em
+    width: 10.125em
+
+.wee
+    bgImage('../img/gerald-wee.jpg')
+    display: inline-block
+    height: 15.1875em
+    width: 12.75em
+
+.wee-details
+    padding-left: 0
+
+.kawaguchi-saito
+    bgImage('../img/AMrSaitowSensei2.jpg')
+    display: inline-block
+    float: right
+    height: 12.125em
+    margin-bottom: 1.9375em
+    margin-left: 0.75em
+    width: 9.1875em
+    span
+        top: 19.8em
+        width: 14.7em
+
+.karate-class
+    bgImage('../img/AKarateClassphotoedited2.jpg')
+    background-size: 100%;
+    display: inline-block
+    height: 10.0625em
+    margin-bottom: 0.9375em
+    max-width: 16.375em
+    width: 100%
+    span
+        top: 16.1em
+        width: 100%
+.show
+    display: block !important
+
+.hide
+    display: none !important
+
+.clear-it
+    clear: both
+    display: block
+
+.flush-bottom
+    margin-bottom: 0
+
+#media-modal
+    position: absolute
+    width: 100%
+    z-index: 10
+    h4
+        display: inline-block
+        margin-top: 1em
+    iframe
+        background url('../img/ajax-loader.gif') no-repeat scroll center transparent
+        max-width: 90%
+    img + iframe
+        margin-top: 1em
+    .wrapper
+        background-color: main-bg-color
+        max-width: 37.5em
+        margin: 1em auto 0
+        padding-bottom: 1em
+        position: relative
+        text-align: center
+        width: 90%
+    .close
+        background-color: subtle-color
+        color: main-bg-color
+        cursor: pointer;
+        line-height: 1em
+        padding: 0.3em 0.5em
+        position: absolute
+        right: 0
+        top: 0
+    .diagram
+        display: block
+        margin: 0 auto
+        max-width: 95%
+
+#overlay
+    background-color: rgba(0,0,0,0.5)
+    height: 100%
+    left: 0
+    position: fixed
+    top: 0
+    width: 100%
+    z-index: 9
+
+/* media Queries */
+
+/* MOBILE PORTRAIT */
+@media only screen and (min-width: 320px)
+    .common-nav a
+        display: inline-block
+        padding: 0.83333333333333em
+
+    header h1
+        height: 11.3999772000456em
+        max-width: 10.53747892504215em
+
+    .judo-sport
+        background-position: center;
+
+@media only screen and (min-width: 380px)
+    .judo-sport
+        height: 13.9375em;
+
+/* MOBILE LANDSCAPE */
+@media only screen and (min-width: 480px)
+    header h1
+        height: 18.41246317507365em
+        max-width: 15.71246857506285em
+
+    .judo-sport
+        height: 18em;
+        width: 26.25em;
+
+    #judo > h3:first-of-type
+        clear: none
+        display: block
+        margin-top: 0
+
+    .logo
+        display: inline-block
+        float: left
+        margin: 0 0.75em 0 0
+
+    .karate-class
+        height: 13.5em
+        max-width: none
+        width: 22.0625em
+        span
+            top: 21.6em
+
+    table
+        font-size: 100%
+        td
+            padding: 0 2px
+        .judo,
+        .karate
+            font-weight: bold
+
+/* TABLET/NETBOOK */
+@media only screen and (min-width: 768px)
+    body
+        padding-top: 2.90476em
+
+    nav
+        position: absolute
+        right: 0
+        top: 0
+
+    #content
+        width: 41.375em
+
+    header h1
+        background-size: initial
+        height: 22.57454850902982em
+        max-width: none
+        width: 19.83710325793484em
+
+    .saito
+        float: right
+        margin-left: 0.75em
+
+    .wee
+        float: left
+        margin: 0 0.75em 1.14286em 0
+
+    .wee-details
+        padding-left: 13.5em
+
+    #throws div
+        display: inline-block
+        width: 50%
+
+    #throws .stack
+        width: 100%
+        li
+            float: left
+            vertical-align: top
+            width: 50%
+            &:nth-child(2)
+                margin-top: 0
+
+/* LANDSCAPE TABLET/NETBOOK/LAPTOP */
+@media only screen and (min-width: 1024px) {}
+
+/* DESKTOP */
+@media only screen and (min-width: 1280px) {}
+
+/* WIDESCREEN */
+/* Increased body size for legibility */
+@media only screen and (min-width: 1400px)
+    body
+        font-size: 116.75%
+
+    /* 18.5px / 28px */
+/* PRINT */
+@media print
+    *
+        background: transparent !important
+        color: black !important
+        text-shadow: none !important
+        filter: none !important
+        -ms-filter: none !important
+
+    /* Black prints faster */
+    a,
+    a:visited
+        color: common-border-color !important
+        text-decoration: underline
+
+    a[href]:after
+        content: " (" attr(href) ")"
+
+    abbr[title]:after
+        content: " (" attr(title) ")"
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after
+        content: ""
+
+    /* Don't print links for images, javascript or internal links */
+    pre,
+    blockquote
+        border: 1px solid common-border-color
+        page-break-inside: avoid
+
+    thead
+        display: table-header-group
+
+    /* Repeat header row at top of each printed page */
+    tr,
+    img
+        page-break-inside: avoid
+
+    img
+        max-width: 100% !important
+
+    @page
+        margin: 0.5cm
+    p,
+    h2,
+    h3
+        orphans: 3
+        widows: 3
+
+    h2,
+    h3
+        page-break-after: avoid
