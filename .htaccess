@@ -16,3 +16,5 @@ FileETag INode MTime Size
 AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/x-javascript
 </IfModule>
 </IfModule>
+
+ErrorDocument 404 /404.html
