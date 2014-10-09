@@ -7,4 +7,9 @@ requirejs.config({
     }
 });
 
-require(['app/init']);
+require(
+    [
+        'app/init',
+        'domReady!'
+    ]
+);
